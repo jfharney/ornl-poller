@@ -2,7 +2,7 @@ import settings
 import requests
 import json
 import datetime
-
+import time
 
 def send_to_pegasus(data):
     # placeholder function to represent sending to pegasus
@@ -14,6 +14,29 @@ def job_status_check(id):
     return 'complete'
 
 
+def poller():
+    
+    counter = 0
+    loopEnds = False
+    while(loopEnds != True):
+        time.sleep(2)
+        print 'in the loop'
+        if counter > 10:
+            loopEnds = True
+        counter = counter + 1
+        
+
+
+def main():
+    
+    poller()
+    
+    print 'in main'
+# display some lines
+
+if __name__ == "__main__": main()
+
+'''
 # Begin Set Up
 url = settings.URL
 s = requests.Session()
@@ -72,3 +95,4 @@ if r.status_code == requests.codes.ok:
 else:
     # An error occurred, log time and code for debugging
     print datetime.datetime.now(), ' ', r.status_code
+'''
