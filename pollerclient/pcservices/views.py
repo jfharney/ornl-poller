@@ -70,6 +70,30 @@ class UserRunsView(View):
         print 'user: ' + str(user)
         print 'status: ' + str(status)
         
+        if status:
+                if status == 'all':
+                    data = UserRuns.objects.all()
+                elif status == 'new':
+                    data = UserRuns.objects.filter(status='new')
+                elif status == 'in_progress':
+                    data = UserRuns.objects.filter(status='in_progress')
+                elif status == 'complete':
+                    data = UserRuns.objects.filter(status='complete')
+                elif status == 'failed':
+                    data = UserRuns.objects.filter(status='failed')
+                else:
+                    print "got here"
+                    return HttpResponse(status=404)
+                obj_list = []
+                for obj in data:
+                    obj_dict = {}
+                    obj_dict['runspec'] = obj.runspec
+                    obj_list.append(obj_dict)
+                print 'len obj_list: ' + str(len(obj_list))
+                return JsonResponse(obj_list, safe=False)
+        
+        
+        
       except Exception as e:
         import traceback
         #print_debug(e)
