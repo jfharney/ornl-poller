@@ -4,6 +4,9 @@ from abc import *
 wfservices_hostname = 'localhost'
 wfservices_port = '9001'
 
+WFSERVICES_HOSTNAME = 'localhost'
+WFSERVICES_PORT = '9001'
+
 class RequestHandler(object):
     
     __metaclass__ = ABCMeta
@@ -27,31 +30,20 @@ class BasicRequestHandler(RequestHandler):
 
     
     def launch(self,message):
-        print 'launching BasicRequestHandler service'
+        print '\n\nlaunching BasicRequestHandler service\n\n'
         
         import requests
         import json
         
-        json_example = { 
-            'casename' : 'case1',
-            'res' : 'res1',
-            'compiler' : 'compiler1',
-            'stop_n' : 'stop_n1',
-            'project' : 'project1',
-            'mppwidth' : 'mppwidth1',
-            'user' : 'user1',
-            'stop_option' : 'stop_option1',
-            'compset' : 'compset1',
-            'mach' : 'mach1',
-            'walltime' : 'walltime1'
-            }
+        json_example = message
     
         #test for calling service5
-        print 'calling service5'
+        #print 'calling service5'
         url = 'http://' + wfservices_hostname + ':' + wfservices_port + '/services/service5/'
         
         r = requests.post(url,data=json_example)
-        print str(r.text)
+        #print str(r.text)
         
         
+     
         

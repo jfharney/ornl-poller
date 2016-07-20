@@ -15,3 +15,9 @@ class UserRunsOUI(models.Model):
     created = models.CharField(max_length=100)
     user = models.CharField(max_length=100)
     config_options = models.CharField(max_length=1000)
+    
+class UserRunsFinal(models.Model):
+    user = models.CharField(max_length=30)
+    config_options = models.TextField()
+    status = models.CharField(max_length=15)
+    created = models.DateTimeField(auto_now_add=True)
