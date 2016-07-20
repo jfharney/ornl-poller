@@ -329,6 +329,10 @@ def service5helper(json_message):
         print '\nCalling url: ' + str(url)
         s = requests.Session()
         r = s.get(url)
+        if r is None:
+            print 'R is none!'
+        else:
+            print 'r.text: ' + str(r.text)
         print 'after call to service0 from service5'
         
     elif response == DONE_RESPONSE:
@@ -337,6 +341,10 @@ def service5helper(json_message):
         print '\nCalling url: ' + str(url)
         s = requests.Session()
         r = s.get(url)
+        if r is None:
+            print 'R is none!'
+        else:
+            print 'r.text: ' + str(r.text)
         print 'after call to service0 from service5'
     
     
